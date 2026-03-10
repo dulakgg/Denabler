@@ -1,4 +1,4 @@
-## 1.0.3
+## 1.0.23
 - Updated to geode 5.3.0
 - Fixed many mistakes i made with this mod
 
