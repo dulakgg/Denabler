@@ -1,8 +1,10 @@
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/dulakgg)
+
 # Denabler
+
 <img src="logo.png" width="150" alt="the mod's logo" />
-Here is your: 🔥💥⚡️ SKIBIDI SIGMA GYATS OHIO SIGMA — desctipion for mod denabler 💀🛠️🚀
-Flip. Dominate. No beta. Lone wolf energy. 👑🐺🤘🔥💣⚡️💯🚫🎛️🕶️
-Denabler
-enables or desables all mods 
-settings: disable denabler itself or not deafultly
-are you happy now?
+
+Just adds a button to main menu to disable and enable all mods with one click 
+this mod has been superseded by Mod profiles made by BlueToadMaker please use his mod it's far better but if you really need this one than ig i can't stop you
+
+**Version:** v1.0.3
