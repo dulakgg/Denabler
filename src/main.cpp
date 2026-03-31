@@ -61,6 +61,7 @@ protected:
 
         m_checkbox = CCMenuItemToggler::createWithStandardSprites(this, menu_selector(ModManagerPopup::onToggle), 1);
         m_checkbox->setCascadeColorEnabled(true);
+        m_checkbox->toggle(!isCheckboxToggled());
         menu2->setContentSize(m_checkbox->getContentSize());
         menu2->addChild(m_checkbox);
 
@@ -80,7 +81,7 @@ protected:
 
     void onToggle(CCObject *)
     {
-        log::debug("Toggled: {}", m_checkbox->isToggled());
+        Mod::get()->setSavedValue("only-pinned", m_checkbox->isToggled());
     }
 
     void onDisableAll(CCObject *)
@@ -95,7 +96,9 @@ protected:
 
         for (auto mod : allMods)
         {
-            if ((mod->isInternal() || !mod->isOrWillBeEnabled()) && (m_checkbox->isToggled() && (m_checkbox->isToggled() && !mod->isPinned())))
+            bool skipUnpinned = !isCheckboxToggled() && !mod->isPinned();
+
+            if (mod->isInternal() || !mod->isOrWillBeEnabled() || skipUnpinned)
             {
                 continue;
             }
@@ -140,7 +143,9 @@ protected:
 
         for (auto mod : allMods)
         {
-            if (mod->isInternal() || mod->isOrWillBeEnabled() || (m_checkbox->isToggled() && !mod->isPinned()))
+            bool skipUnpinned = !isCheckboxToggled() && !mod->isPinned();
+
+            if (mod->isInternal() || mod->isOrWillBeEnabled() || skipUnpinned)
             {
                 continue;
             }
@@ -168,6 +173,11 @@ protected:
         }
 
         FLAlertLayer::create("Enable All Mods", message, "OK")->show();
+    }
+
+    bool isCheckboxToggled()
+    {
+        return Mod::get()->getSavedValue<bool>("only-pinned");
     }
 
 public:
